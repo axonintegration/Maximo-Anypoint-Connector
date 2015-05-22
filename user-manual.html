@@ -1,0 +1,464 @@
+<html><head><link rel="stylesheet" id="github-highlight-style" href="chrome-extension://iaalpfgpbocpdfblpnhhgllgbdbchmia/css/highlight/github.css"><script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({  tex2jax: {    inlineMath: [["\\(", "\\)"]],    displayMath: [["\\[", "\\]"]],    ignoreClass: "nostem|nolatexmath"  },  asciimath2jax: {    delimiters: [["\\$", "\\$"]],    ignoreClass: "nostem|noasciimath"  }});</script><script type="text/javascript" src="chrome-extension://iaalpfgpbocpdfblpnhhgllgbdbchmia/vendor/MathJax/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script><script type="text/javascript" src="chrome-extension://iaalpfgpbocpdfblpnhhgllgbdbchmia/js/vendor/highlight.min.js"></script><link rel="stylesheet" id="asciidoctor-style" href="chrome-extension://iaalpfgpbocpdfblpnhhgllgbdbchmia/css/themes/asciidoctor.css"><link rel="stylesheet" id="font-awesome-style" href="chrome-extension://iaalpfgpbocpdfblpnhhgllgbdbchmia/css/font-awesome.min.css"><title>Maximo Anypoint Connector</title><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style></head><body class="article"><div id="content"><h1>Maximo Anypoint Connector</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Connects to Maximo through the integration layer provided by IBM Maximo Asset Management called Maximo Integration Framework (MIF).</p>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_contents">Contents:</h2>
+<div class="sectionbody">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Introduction</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Prerequisites</p>
+</li>
+<li>
+<p>Requirements</p>
+</li>
+<li>
+<p>Dependencies</p>
+<div class="olist lowerroman">
+<ol class="lowerroman" type="i">
+<li>
+<p>Versions</p>
+</li>
+<li>
+<p>Consumers</p>
+</li>
+</ol>
+</div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Installing &amp; Configuring</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Installing</p>
+</li>
+<li>
+<p>Configuring</p>
+</li>
+<li>
+<p>Upgrading from a Previous Version</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Using the Connector</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Use Cases and Demos</p>
+</li>
+<li>
+<p>Best Practices</p>
+</li>
+<li>
+<p>Adding to a Flow</p>
+</li>
+<li>
+<p>Query Types</p>
+</li>
+<li>
+<p>Increasing Performance</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Example Use Case</p>
+<div class="olist loweralpha">
+<ol class="loweralpha" type="a">
+<li>
+<p>Anypoint™ Studio  Visual Editor | XML Editor</p>
+</li>
+<li>
+<p>Example Code</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Demo</p>
+</li>
+<li>
+<p>F.A.Q</p>
+</li>
+<li>
+<p>See Also</p>
+</li>
+</ol>
+</div>
+<hr>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_introduction">Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>IBM Maximo Asset Management is a comprehensive solution for managing physical assets on a common platform in asset-intensive industries.
+The Maximo Anypoint Connector uses the integration layer provided by IBM Maximo Asset Management called Maximo Integration Framework (MIF).
+MIF provides web services to support application services.  MIF web services are configured through administrator screens provided by Maximo itself and expose and enable interaction to Maximo entities, customized as required by the client.</p>
+</div>
+<div class="sect2">
+<h3 id="_prerequisites">Prerequisites</h3>
+<div class="paragraph">
+<p>This document assumes that you are familiar with the basic concepts of Maximo and have access to a Maximo instance.
+You should either have visibility and edit access to object structures and web services, or else have the support of a Maximo administrator that will expose the required Maximo functionality.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_requirements">Requirements</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Maximo environment (tested on versions 7 and 7.5 and above) installed as per Maximo specification.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_dependencies">Dependencies</h3>
+<div class="paragraph">
+<p>MuleSoft Anypoint Studio or MuleSoft Standalone v3.6.x is required for the connector to work.
+Should you require the connector for a previous version of the MuleSoft environment kindly contact Computime Ltd.
+This connector is compiled using JDK 7.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installing_and_configuring">Installing and Configuring</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_installing">Installing</h3>
+<div class="paragraph">
+<p>The connector distribution is obtainable by contacting Computime Ltd (<a href="http://www.computime.com.mt/" class="bare">http://www.computime.com.mt/</a>)
+Once you are provided with the connector UpdateSite.zip package.  In the Studio navigate to
+Help &gt; Install New Software &gt; Add &gt; Navigate to the zip file on your local repository and install.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configuring">Configuring</h3>
+<div class="paragraph">
+<p>Configuration of a connection is set through the Global Elements section in the studio.  There you can provide the connection credentials.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_updating_from_an_older_version">Updating From an Older Version</h3>
+<div class="paragraph">
+<p>This is the first public release of the connector.  Therefore this section is not applicable.</p>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_this_connector">Using This Connector</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The current version of the Anypoint connector enables interaction with MIF exposed object structures.
+This is done by creating Object Structures (Go To &gt; Integration &gt; Object Structures) linking one or more Maximo objects together in a hierarchy joined by relationships (all configured through Maximo).
+A Web Service (Go To &gt; Integration &gt; Web Services) is then created based on this object structure and deployed.    Such services have a query, create, delete, update and sync methods exposed by default which can be restricted and secured as required.</p>
+</div>
+<div class="paragraph">
+<p>This connector offers two operations, one for "Query" on an object structure, and the other for "Updates".  Updates include a mix of create, update, delete methods.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Query: This processor calls the Maximo 'query' method of a web service.  The query method takes either a query string or a structure of filters over the object’s entities.  Optional properties are available to enable paging, filtering and ordering of results.</p>
+</li>
+<li>
+<p>Update: MIF provides four different methods for update (create, delete, update, sync) which are condensed into one method in the Anypoint Connector.  The MIF sync method enables a mixture or create, deletes and updates to be effected as a transaction.  Instead the Maximo Anypoint connector update processor takes a list of Maximo update entries each with a defined 'action' value taking the values 'Add', 'Delete', 'Change' and 'AddChange'.  If all 'action' values in the list are the same and are not set to 'AddChange', the connector will default to one of the explicit update Maximo methods, else the connector will use the Maximo sync method.
+The 'update' operation take a list of update-entry as input.  These entries are updated in Maximo as a batch with full commit/rollback functionality.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_use_cases_and_demos">Use Cases and Demos</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Query GL Components using object query</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maximo web service configured with name "CT_ACC_ANALYSIS" based on object structure "CT_ACC_ANALYSIS".</p>
+</li>
+<li>
+<p>Query: Top 10 GLCOMPONENTS with an ID ⇐ 2</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml hljs " data-lang="xml"> 	<span class="hljs-tag">&lt;<span class="hljs-title">maximo:query</span> <span class="hljs-attribute">config-ref</span>=<span class="hljs-value">"maximo"</span> <span class="hljs-attribute">webServiceName</span>=<span class="hljs-value">"CT_ACC_ANALYSIS"</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"maximo"</span> <span class="hljs-attribute">objectStructureName</span>=<span class="hljs-value">"CT_ACC_ANALYSIS"</span> <span class="hljs-attribute">maximumItems</span>=<span class="hljs-value">"10"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">maximo:query-conditions</span> <span class="hljs-attribute">objectName</span>=<span class="hljs-value">"GLCOMPONENTS"</span>&gt;</span>
+        	<span class="hljs-tag">&lt;<span class="hljs-title">maximo:query-conditions</span>&gt;</span>
+        		<span class="hljs-tag">&lt;<span class="hljs-title">maximo:query-condition</span> <span class="hljs-attribute">fieldName</span>=<span class="hljs-value">"GLCOMPONENTSID"</span> <span class="hljs-attribute">fieldValue</span>=<span class="hljs-value">"2"</span> <span class="hljs-attribute">operator</span>=<span class="hljs-value">"smaller_equal"</span>/&gt;</span>
+        	<span class="hljs-tag">&lt;/<span class="hljs-title">maximo:query-conditions</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">maximo:query-conditions</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">maximo:query</span>&gt;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Query GL Components using SQL where clause</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maximo web service configured with name "CT_ACC_ANALYSIS" based on object structure "CT_ACC_ANALYSIS".</p>
+</li>
+<li>
+<p>Query: Top 10 GLCOMPONENTS with an ID ⇐ 2</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml hljs " data-lang="xml"><span class="hljs-tag">&lt;<span class="hljs-title">maximo:query</span> <span class="hljs-attribute">config-ref</span>=<span class="hljs-value">"maximo"</span> <span class="hljs-attribute">webServiceName</span>=<span class="hljs-value">"CT_ACC_ANALYSIS"</span> <span class="hljs-attribute">query</span>=<span class="hljs-value">"GLCOMPONENTSID &amp;lt;= 2"</span>  <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"maximo"</span> <span class="hljs-attribute">objectStructureName</span>=<span class="hljs-value">"CT_ACC_ANALYSIS"</span> <span class="hljs-attribute">maximumItems</span>=<span class="hljs-value">"10"</span>&gt;</span></code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Update GL Components</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Maximo web service configured with name "CT_ACC_ANALYSIS" based on object structure "CT_ACC_ANALYSIS".</p>
+</li>
+<li>
+<p>Update single GLCOMPONENT.  'AddChange' action used as the component should be created if it doesn’t already exist, or updated otherwise.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml hljs " data-lang="xml">	<span class="hljs-tag">&lt;<span class="hljs-title">maximo:update</span> <span class="hljs-attribute">config-ref</span>=<span class="hljs-value">"maximo"</span> <span class="hljs-attribute">webServiceName</span>=<span class="hljs-value">"CT_ACC_ANALYSIS"</span> <span class="hljs-attribute">action</span>=<span class="hljs-value">"Sync"</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"Change GL Components"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">maximo:udpate-entries</span>&gt;</span>
+        	<span class="hljs-tag">&lt;<span class="hljs-title">maximo:udpate-entry</span> <span class="hljs-attribute">action</span>=<span class="hljs-value">"AddChange"</span> <span class="hljs-attribute">objectName</span>=<span class="hljs-value">"GLCOMPONENTS"</span>&gt;</span>
+        		<span class="hljs-tag">&lt;<span class="hljs-title">maximo:condition-fields</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"#[['GLORDER':'0', 'SOURCESYSID':'SUN', 'ORGID':'EAGLENA', 'COMPVALUE':'5000']]"</span>/&gt;</span>
+        		<span class="hljs-tag">&lt;<span class="hljs-title">maximo:fields</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"#[['COMPTEXT': 'Anypoint Connector Test']]"</span>/&gt;</span>
+        	<span class="hljs-tag">&lt;/<span class="hljs-title">maximo:udpate-entry</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">maximo:udpate-entries</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">maximo:update</span>&gt;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_best_practices">Best Practices</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_adding_to_a_flow">Adding to a Flow</h3>
+<div class="paragraph">
+<p>Search for the term 'Maximo' on the side 'connectors' menu of the studio designer and drag the connector icon into your studio flow.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_query_types">Query Types</h3>
+<div class="paragraph">
+<p>The connector supports two query mechanisms (where either property A or B below is populated):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Object Structure</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The 'query' operation in the connector accepts a property 'query-conditions' as input which should be an instance of the class com.computime.maximo.MaximoQueryEntry.
+The instance of this class includes conditions related to one of the Maximo entities exposed by the underlying object structure of the web service.  It accepts a list of conditions used to filter that object.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>WHERE Clause</p>
+<div class="ulist">
+<ul>
+<li>
+<p>The 'query' operation in the connector accepts a property 'query' which can contain an SQL-based 'where' clause that will be executed over the root object of the object structure.
+For example if the service CT_GLCOMPONENT has an object structure with GLCOMPONENT as the parent object then the contents of the where clause %QUERY% would be translated as:
+SELECT * FROM GLCOMPONENTS WHERE %QUERY%</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_increasing_performance">Increasing Performance</h3>
+<div class="paragraph">
+<p>The Maximo environment on WebSphere configures a thread pool for incoming web service connections.  If there is no thread available the Maximo connection will fail.
+The size of this thread pool should be considered to avoid exceeding this limit.  Possible solutions could be:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Have multiple JVMs in Maximo available listening on different ports and a load balancer.  Therefore the load is shared between several listener thread pools</p>
+</li>
+<li>
+<p>Avoid situations where many requests are spawned in parallel to Maximo. Maybe add a small delay or send them sequentially instead.</p>
+</li>
+<li>
+<p>Retry a connection if it fails.</p>
+</li>
+</ul>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example_use_case">Example Use Case</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Query invoices unprocessed in Maximo (EXTERNALREFID is blank).  Write these invoices to a file.
+Mark returned invoices as 'processed' by populating the EXTERNALREFID.</p>
+</div>
+<div class="sect2">
+<h3 id="_anypoint_studio_visual_editor_xml_editor">Anypoint™ Studio  Visual Editor | XML Editor</h3>
+<div class="paragraph">
+<p>Pre-requisites:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Generate object structure CT_INVOICES in Maximo exposing the INVOICE entity.</p>
+</li>
+<li>
+<p>Generate web service CT_INVOICES based on object structure CT_INVOICES in Maximo.</p>
+</li>
+<li>
+<p>Deploy the CT_INVOICES web service on the Maximo container.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Flow Design:
+1. Define an inbound HTTP listener such that when a GET request is received the interface is triggered.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Query Maximo for any invoices with a blank EXTERNALREFID (if this field is being used by some other interface, than consider creating a new field in Maximo)</p>
+</li>
+<li>
+<p>Write the XML received from Maximo into an external repository.</p>
+</li>
+<li>
+<p>Extract INVOICENUM returned by Maximo.  Maximo XML references the <a href="http://www.ibm.com/maximo" class="bare">http://www.ibm.com/maximo</a> XML namespace.  The namespace needs to be setup in the Mule flow such that XPath expressions can traverse the XML.</p>
+</li>
+<li>
+<p>Update the EXTERNALREFID for all INVOICENUM returned as 'processed'.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_code_example">Code Example</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-xml hljs " data-lang="xml"> <span class="hljs-tag">&lt;<span class="hljs-title">mulexml:namespace-manager</span> <span class="hljs-attribute">includeConfigNamespaces</span>=<span class="hljs-value">"true"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-title">mulexml:namespace</span> <span class="hljs-attribute">uri</span>=<span class="hljs-value">"http://www.ibm.com/maximo"</span> <span class="hljs-attribute">prefix</span>=<span class="hljs-value">"max"</span>/&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-title">mulexml:namespace-manager</span>&gt;</span>
+
+   <span class="hljs-tag">&lt;<span class="hljs-title">flow</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"MaximoToSun_invoicesDemo"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">http:listener</span> <span class="hljs-attribute">config-ref</span>=<span class="hljs-value">"HTTP_Listener_Configuration"</span> <span class="hljs-attribute">path</span>=<span class="hljs-value">"/maximoinvoices"</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"HTTP"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">http:response-builder</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-title">http:header</span> <span class="hljs-attribute">headerName</span>=<span class="hljs-value">"Content-Type"</span> <span class="hljs-attribute">value</span>=<span class="hljs-value">"text/xml"</span>/&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">http:response-builder</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">http:listener</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">maximo:query</span> <span class="hljs-attribute">config-ref</span>=<span class="hljs-value">"maximo"</span> <span class="hljs-attribute">webServiceName</span>=<span class="hljs-value">"CT_INVOICES"</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"Query Invoices Pending"</span> <span class="hljs-attribute">maximumItems</span>=<span class="hljs-value">"1"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">maximo:query-conditions</span> <span class="hljs-attribute">objectName</span>=<span class="hljs-value">"INVOICE"</span>&gt;</span>
+        	<span class="hljs-tag">&lt;<span class="hljs-title">maximo:query-conditions</span>&gt;</span>
+        		<span class="hljs-tag">&lt;<span class="hljs-title">maximo:query-condition</span> <span class="hljs-attribute">fieldName</span>=<span class="hljs-value">"EXTERNALREFID"</span> <span class="hljs-attribute">fieldValue</span>=<span class="hljs-value">""</span> <span class="hljs-attribute">operator</span>=<span class="hljs-value">"equals"</span> <span class="hljs-attribute">operandModeOr</span>=<span class="hljs-value">"false"</span>/&gt;</span>
+        	<span class="hljs-tag">&lt;/<span class="hljs-title">maximo:query-conditions</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">maximo:query-conditions</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">maximo:query</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">logger</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">"Maximo Response: #[payload]"</span> <span class="hljs-attribute">level</span>=<span class="hljs-value">"INFO"</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"Logger"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">file:outbound-endpoint</span> <span class="hljs-attribute">responseTimeout</span>=<span class="hljs-value">"10000"</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"File"</span> <span class="hljs-attribute">connector-ref</span>=<span class="hljs-value">"File"</span> <span class="hljs-attribute">path</span>=<span class="hljs-value">"invoices"</span> <span class="hljs-attribute">outputPattern</span>=<span class="hljs-value">"export.xml"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">expression-transformer</span> <span class="hljs-attribute">expression</span>=<span class="hljs-value">"#[xpath3('//max:INVOICE/max:INVOICENUM', payload, 'NODESET')]"</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"Expression"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">logger</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">"Maximo Response: #[payload]"</span> <span class="hljs-attribute">level</span>=<span class="hljs-value">"INFO"</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"Logger"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">collection-splitter</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"Collection Splitter"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">expression-transformer</span> <span class="hljs-attribute">expression</span>=<span class="hljs-value">"#[xpath3('.', payload, 'STRING')]"</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"Expression"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">logger</span> <span class="hljs-attribute">message</span>=<span class="hljs-value">"Maximo Response: #[payload]"</span> <span class="hljs-attribute">level</span>=<span class="hljs-value">"INFO"</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"Logger"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">maximo:update</span> <span class="hljs-attribute">config-ref</span>=<span class="hljs-value">"maximo"</span> <span class="hljs-attribute">webServiceName</span>=<span class="hljs-value">"CT_INVOICES"</span> <span class="hljs-attribute">action</span>=<span class="hljs-value">"Update"</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"Invoice Writeback"</span>&gt;</span>
+        	<span class="hljs-tag">&lt;<span class="hljs-title">maximo:udpate-entries</span>&gt;</span>
+            	<span class="hljs-tag">&lt;<span class="hljs-title">maximo:udpate-entry</span> <span class="hljs-attribute">action</span>=<span class="hljs-value">"Change"</span> <span class="hljs-attribute">objectName</span>=<span class="hljs-value">"INVOICE"</span>&gt;</span>
+            		<span class="hljs-tag">&lt;<span class="hljs-title">maximo:condition-fields</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"#[['INVOICENUM': payload, 'SITEID': 'BEDFORD', 'ORGID':'EAGLENA']]"</span>/&gt;</span>
+            		<span class="hljs-tag">&lt;<span class="hljs-title">maximo:fields</span> <span class="hljs-attribute">ref</span>=<span class="hljs-value">"#[['EXTERNALREFID': 'processed']]"</span>/&gt;</span>
+            	<span class="hljs-tag">&lt;/<span class="hljs-title">maximo:udpate-entry</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-title">maximo:udpate-entries</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">maximo:update</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-title">catch-exception-strategy</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"Catch Exception Strategy"</span> <span class="hljs-attribute">enableNotifications</span>=<span class="hljs-value">"false"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-title">expression-transformer</span> <span class="hljs-attribute">expression</span>=<span class="hljs-value">"#[exception.getCause().getMessage().replaceAll('Unsuccessful SunSystems SSC Response:', '')]"</span> <span class="hljs-attribute">doc:name</span>=<span class="hljs-value">"Expression"</span>/&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-title">catch-exception-strategy</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-title">flow</span>&gt;</span></code></pre>
+</div>
+</div>
+<hr>
+</div>
+<div class="sect2">
+<h3 id="_f_a_q">F.A.Q</h3>
+<div class="paragraph">
+<p>This section will be improved in upcoming versions and we start receiving questions.  Please contact Computime Ltd with any questions (<a href="mailto:info@computime.com.mt">info@computime.com.mt</a>) and a ticket will be raised on our helpdesk system.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_see_also">See Also</h3>
+<div class="paragraph">
+<p>Maximo Integration Framework documentation available on the IBM Knowledge Center
+<a href="http://www-01.ibm.com/support/knowledgecenter/SSLKT6_7.1.0/com.ibm.mam.doc_7.1/pdf/mam71_integration_guide.pdf" class="bare">http://www-01.ibm.com/support/knowledgecenter/SSLKT6_7.1.0/com.ibm.mam.doc_7.1/pdf/mam71_integration_guide.pdf</a></p>
+</div>
+</div>
+</div>
+</div></div><script id="mathjax-refresh-js">if (window.MathJax) { window.MathJax.Hub.Typeset(); }</script></body></html>

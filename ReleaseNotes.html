@@ -1,0 +1,143 @@
+<html><head><link rel="stylesheet" id="github-highlight-style" href="chrome-extension://iaalpfgpbocpdfblpnhhgllgbdbchmia/css/highlight/github.css"><script type="text/x-mathjax-config;executed=true">MathJax.Hub.Config({  tex2jax: {    inlineMath: [["\\(", "\\)"]],    displayMath: [["\\[", "\\]"]],    ignoreClass: "nostem|nolatexmath"  },  asciimath2jax: {    delimiters: [["\\$", "\\$"]],    ignoreClass: "nostem|noasciimath"  }});</script><script type="text/javascript" src="chrome-extension://iaalpfgpbocpdfblpnhhgllgbdbchmia/vendor/MathJax/MathJax.js?config=TeX-MML-AM_HTMLorMML"></script><script type="text/javascript" src="chrome-extension://iaalpfgpbocpdfblpnhhgllgbdbchmia/js/vendor/highlight.min.js"></script><link rel="stylesheet" id="asciidoctor-style" href="chrome-extension://iaalpfgpbocpdfblpnhhgllgbdbchmia/css/themes/asciidoctor.css"><link rel="stylesheet" id="font-awesome-style" href="chrome-extension://iaalpfgpbocpdfblpnhhgllgbdbchmia/css/font-awesome.min.css"><title>Maximo Connector Release Notes</title><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Hover_Arrow {position: absolute; width: 15px; height: 11px; cursor: pointer}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; color: #666666}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_Menu_Close {position: absolute; width: 31px; height: 31px; top: -15px; left: -15px}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style></head><body class="article"><div id="MathJax_Message" style="display: none;"></div><div id="content"><div class="sect1">
+<h2 id="_maximo_connector_release_notes">Maximo Connector Release Notes</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_14_05_2015">14-05-2015</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_contents">Contents</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Compatibility</p>
+</li>
+<li>
+<p>Features</p>
+</li>
+<li>
+<p>Fixed in this Release</p>
+</li>
+<li>
+<p>Known Issues</p>
+</li>
+<li>
+<p>Support Resources</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Release Notes for version 1.0.0 of the Maximo connector. These Release Notes accompany the  &lt;Connector_Guide_URL&gt; guide.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_compatibility">Compatibility</h3>
+<div class="paragraph">
+<p>The Maximo connector is compatible with:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Application/Service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Version</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7 and above</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mule Runtime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3.6.x</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Maximo Connector</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.0.0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_migrating_from_older_versions_of_the_connector">Migrating from older versions of the connector:</h3>
+<div class="paragraph">
+<p>Not applicable as this is the first public release</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_features">Features</h3>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Object Structure based web service - Execute a deployed web service that is based on a Maximo object structure</p>
+</li>
+<li>
+<p>Query and Update operations - Execute a Maximo query, add, delete, change or addChange on a Maximo entry (or batch of).</p>
+</li>
+<li>
+<p>Authentication and Security - Supports native authentication through a Maximo username and password authenticated account.  Supports HTTPS through the setting of certificates in the Mule truststore and setting of an HTTPS Maximo web app URL.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_fixed_in_this_release">Fixed in this Release</h3>
+<div class="paragraph">
+<p>Not applicable as this is the first public release</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_known_issues">Known Issues</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>No support for customized web services of web services exposing Enterprise Services - Contact Computime Ltd if support is required (www.computime.com.mt)</p>
+</li>
+<li>
+<p>No support of WebSphere MQ integration - Contact Computime Ltd if support is required (www.computime.com.mt)</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_support_resources">Support Resources</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Learn how to Install and Configure Anypoint Connectors in Anypoint Studio.</p>
+</li>
+<li>
+<p>Access MuleSoft’s MuleForge forum to pose questions and get help from Mule’s broad community of users.</p>
+</li>
+<li>
+<p>To access MuleSoft’s expert support team, subscribe to Mule ESB Enterprise and log in to MuleSoft’s Customer Portal.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div></div><script id="mathjax-refresh-js">if (window.MathJax) { window.MathJax.Hub.Typeset(); }</script></body></html>
