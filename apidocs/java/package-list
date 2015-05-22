@@ -1,0 +1,12 @@
+com.computime.maximo
+com.computime.maximo.adapter
+com.computime.maximo.adapters
+com.computime.maximo.agents
+com.computime.maximo.config
+com.computime.maximo.connectivity
+com.computime.maximo.devkit
+com.computime.maximo.holders
+com.computime.maximo.pooling
+com.computime.maximo.processors
+com.computime.maximo.transformers
+

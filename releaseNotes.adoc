@@ -1,0 +1,107 @@
+//= Anypoint&trade; Connectors Release Notes Template
+//
+//The following is a proposed connector documentation template for documenting Release notes for MuleSoft connectors. 
+//
+//
+//== References:
+//
+//- <System_Name>: The system the connector connects to, at the other end of the mule runtime, i.e. SalesForce, Workday Financials, 
+//
+//- <Release_date>: The date in which the connector is released (not when the notes are written, mind you)
+//
+//- <Connector_Version>: Describes the connector version, such as “V2013”, “V4.0”, “V4.0.1-HF2” or whatever used for release
+//
+//- <Connector_Guide_Url>: Points to the mulesoft.org pages for documentation on the functional aspects of the connector. e.g.: http://www.mulesoft.org/documentation/display/current/Microsoft+SharePoint+2013+Connector
+//
+//- <Supported_Mule_Version> Indicates which versions of the Mule runtime are supported, i.e.: 3.5.1 and higher, 3.4.3 and Higher, 3.6.0, etc
+//
+
+== Maximo Connector Release Notes
+=== 14-05-2015
+
+=== Contents
+
+- Compatibility
+- Features
+- Fixed in this Release
+- Known Issues
+- Support Resources
+
+Release Notes for version 1.0.0 of the Maximo connector. These Release Notes accompany the  <Connector_Guide_URL> guide.
+ 
+=== Compatibility
+The Maximo connector is compatible with:
+
+|===
+|Application/Service|Version
+|Maximo|7 and above
+
+|Mule Runtime|3.6.x
+|Maximo Connector|1.0.0
+|===
+
+=== Migrating from older versions of the connector:
+Not applicable as this is the first public release 
+
+//If you’re currently using connector <old_connector_version> to migrate to this connector you need to:
+
+//- <step_1>
+//- <step_2>
+
+//If you’re currently using a connector version <old_connector_version_2> this connector is not compatible. Don’t upgrade to this connector unless you are sure you do the following:
+
+//- <step_3>
+//- <step_4>
+
+//<Step_1 to N should be clear instructions that pertain to the migration path from one connector to the other.
+
+//Examples might include
+
+//- Specifying which version of the runtime is needed for the new connector
+//- Changes in the version of the connected systems to be able to work
+//- When the connector suffers structural changes (i.e monolythic connectors now many update sites) we should also inform the split and why and how to update from one to //the other.
+//- Specific instructions if the connector is running in CloudHub (like changing the Mule Runtime version, etc)
+//- The first list of steps is for in-place upgrades, probably just updating via Maven or  Anypoint Studio  and re deploying.
+//- The second list is for the connectors that are older and require additional steps.
+//- Some of this might not apply (i.e. a connector is backwards compatible with all released versions or there is no previous version)
+
+
+=== Features
+
+. Object Structure based web service - Execute a deployed web service that is based on a Maximo object structure
+
+. Query and Update operations - Execute a Maximo query, add, delete, change or addChange on a Maximo entry (or batch of).
+
+. Authentication and Security - Supports native authentication through a Maximo username and password authenticated account.  Supports HTTPS through the setting of certificates in the Mule truststore and setting of an HTTPS Maximo web app URL.
+
+//Example of a Feature listing:
+
+//NTLM Authentication - NTLM authentication is now more robust and widely compatible with more domain controller configurations. 
+
+=== Fixed in this Release
+Not applicable as this is the first public release 
+//- <Bug_Title> - <Conditions under which the bug used to happen, explain which was the result, which is now the fixed result> 
+
+//Example of a Bug listing:
+
+//- Asyncronous processing now works when invoking via an External interface - Previously, when invoking an asyncronous service, the call could end up in a deadlock unless //lock(object) was used. Now, the connector locks automatically and you don’t need to do it.
+
+//Example of what is NOT A BUG listing
+
+//- Fixed CLDCONNECT-XYZ (because projects are not public)
+//- Functional tests XYZ now work (because functional testing or any other part of the development process is not visible to customers)
+//- Increased Sonar coverage (ditto)
+//- Resolved NPE (lacking information like scenarios under which it can be reproduced, what is NPE, etc)
+
+=== Known Issues
+- No support for customized web services of web services exposing Enterprise Services - Contact Computime Ltd if support is required (www.computime.com.mt)
+- No support of WebSphere MQ integration - Contact Computime Ltd if support is required (www.computime.com.mt)
+
+//<Connector_Issues, use the same format as Bug listings>
+
+=== Support Resources
+
+- Learn how to Install and Configure Anypoint Connectors in Anypoint Studio.
+- Access MuleSoft's MuleForge forum to pose questions and get help from Mule's broad community of users.
+- To access MuleSoft's expert support team, subscribe to Mule ESB Enterprise and log in to MuleSoft's Customer Portal.
+

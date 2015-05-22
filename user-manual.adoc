@@ -1,0 +1,237 @@
+//= Anypoint Connectors User Guide
+//
+//The following is a proposed connector user guide template for documenting MuleSoft and 3rd party connectors. When completed, a tech writer will work with the development teams to bring existing and new connector documentation to this standard. Please review and add your comments. Thanks!  
+//
+//Note: Horizontal lines show sections, but won't be in the actual documents.
+//
+//---
+
+= Maximo Anypoint Connector
+
+Connects to Maximo through the integration layer provided by IBM Maximo Asset Management called Maximo Integration Framework (MIF).
+
+---
+
+== Contents:
+
+. Introduction
+.. Prerequisites
+.. Requirements
+.. Dependencies
+... Versions
+... Consumers
+
+. Installing & Configuring
+.. Installing
+.. Configuring
+.. Upgrading from a Previous Version
+
+. Using the Connector
+.. Use Cases and Demos
+.. Best Practices
+.. Adding to a Flow
+.. Query Types
+.. Increasing Performance
+
+. Example Use Case
+..  Anypoint&trade; Studio  Visual Editor | XML Editor
+.. Example Code
+. Demo
+. F.A.Q
+. See Also
+
+---
+
+== Introduction 
+
+IBM Maximo Asset Management is a comprehensive solution for managing physical assets on a common platform in asset-intensive industries. 
+The Maximo Anypoint Connector uses the integration layer provided by IBM Maximo Asset Management called Maximo Integration Framework (MIF).  
+MIF provides web services to support application services.  MIF web services are configured through administrator screens provided by Maximo itself and expose and enable interaction to Maximo entities, customized as required by the client.  
+
+=== Prerequisites
+
+This document assumes that you are familiar with the basic concepts of Maximo and have access to a Maximo instance.  
+You should either have visibility and edit access to object structures and web services, or else have the support of a Maximo administrator that will expose the required Maximo functionality.
+
+=== Requirements
+
+- Maximo environment (tested on versions 7 and 7.5 and above) installed as per Maximo specification.
+
+=== Dependencies
+
+MuleSoft Anypoint Studio or MuleSoft Standalone v3.6.x is required for the connector to work.
+Should you require the connector for a previous version of the MuleSoft environment kindly contact Computime Ltd.
+This connector is compiled using JDK 7.
+
+---
+
+== Installing and Configuring 
+
+=== Installing
+
+The connector distribution is obtainable by contacting Computime Ltd (http://www.computime.com.mt/) 
+Once you are provided with the connector UpdateSite.zip package.  In the Studio navigate to 
+Help > Install New Software > Add > Navigate to the zip file on your local repository and install.
+
+=== Configuring
+
+Configuration of a connection is set through the Global Elements section in the studio.  There you can provide the connection credentials.
+
+=== Updating From an Older Version
+
+This is the first public release of the connector.  Therefore this section is not applicable.
+ 
+---
+
+== Using This Connector
+
+The current version of the Anypoint connector enables interaction with MIF exposed object structures.  
+This is done by creating Object Structures (Go To > Integration > Object Structures) linking one or more Maximo objects together in a hierarchy joined by relationships (all configured through Maximo).   
+A Web Service (Go To > Integration > Web Services) is then created based on this object structure and deployed.    Such services have a query, create, delete, update and sync methods exposed by default which can be restricted and secured as required.
+
+This connector offers two operations, one for "Query" on an object structure, and the other for "Updates".  Updates include a mix of create, update, delete methods.  
+
+* Query: This processor calls the Maximo 'query' method of a web service.  The query method takes either a query string or a structure of filters over the object's entities.  Optional properties are available to enable paging, filtering and ordering of results.
+
+* Update: MIF provides four different methods for update (create, delete, update, sync) which are condensed into one method in the Anypoint Connector.  The MIF sync method enables a mixture or create, deletes and updates to be effected as a transaction.  Instead the Maximo Anypoint connector update processor takes a list of Maximo update entries each with a defined 'action' value taking the values 'Add', 'Delete', 'Change' and 'AddChange'.  If all 'action' values in the list are the same and are not set to 'AddChange', the connector will default to one of the explicit update Maximo methods, else the connector will use the Maximo sync method.
+The 'update' operation take a list of update-entry as input.  These entries are updated in Maximo as a batch with full commit/rollback functionality.
+  
+=== Use Cases and Demos
+
+* Query GL Components using object query
+** Maximo web service configured with name "CT_ACC_ANALYSIS" based on object structure "CT_ACC_ANALYSIS".  
+** Query: Top 10 GLCOMPONENTS with an ID <= 2
+
+[source,xml]
+----
+ 	<maximo:query config-ref="maximo" webServiceName="CT_ACC_ANALYSIS" doc:name="maximo" objectStructureName="CT_ACC_ANALYSIS" maximumItems="10">
+        <maximo:query-conditions objectName="GLCOMPONENTS">
+        	<maximo:query-conditions>
+        		<maximo:query-condition fieldName="GLCOMPONENTSID" fieldValue="2" operator="smaller_equal"/>
+        	</maximo:query-conditions>
+        </maximo:query-conditions>
+        </maximo:query>
+----
+
+* Query GL Components using SQL where clause
+** Maximo web service configured with name "CT_ACC_ANALYSIS" based on object structure "CT_ACC_ANALYSIS".  
+** Query: Top 10 GLCOMPONENTS with an ID <= 2
+
+[source,xml]
+----
+<maximo:query config-ref="maximo" webServiceName="CT_ACC_ANALYSIS" query="GLCOMPONENTSID &lt;= 2"  doc:name="maximo" objectStructureName="CT_ACC_ANALYSIS" maximumItems="10">
+----
+
+* Update GL Components
+** Maximo web service configured with name "CT_ACC_ANALYSIS" based on object structure "CT_ACC_ANALYSIS".
+** Update single GLCOMPONENT.  'AddChange' action used as the component should be created if it doesn't already exist, or updated otherwise.
+
+[source,xml]
+----
+	<maximo:update config-ref="maximo" webServiceName="CT_ACC_ANALYSIS" action="Sync" doc:name="Change GL Components">
+        <maximo:udpate-entries>
+        	<maximo:udpate-entry action="AddChange" objectName="GLCOMPONENTS">
+        		<maximo:condition-fields ref="#[['GLORDER':'0', 'SOURCESYSID':'SUN', 'ORGID':'EAGLENA', 'COMPVALUE':'5000']]"/>
+        		<maximo:fields ref="#[['COMPTEXT': 'Anypoint Connector Test']]"/>
+        	</maximo:udpate-entry>            	
+        </maximo:udpate-entries>
+    </maximo:update>
+----
+        
+=== Best Practices
+ 
+
+=== Adding to a Flow
+Search for the term 'Maximo' on the side 'connectors' menu of the studio designer and drag the connector icon into your studio flow.  
+
+=== Query Types
+The connector supports two query mechanisms (where either property A or B below is populated):
+
+* Object Structure
+** The 'query' operation in the connector accepts a property 'query-conditions' as input which should be an instance of the class com.computime.maximo.MaximoQueryEntry.
+The instance of this class includes conditions related to one of the Maximo entities exposed by the underlying object structure of the web service.  It accepts a list of conditions used to filter that object.
+	
+* WHERE Clause
+** The 'query' operation in the connector accepts a property 'query' which can contain an SQL-based 'where' clause that will be executed over the root object of the object structure.
+For example if the service CT_GLCOMPONENT has an object structure with GLCOMPONENT as the parent object then the contents of the where clause %QUERY% would be translated as:
+SELECT * FROM GLCOMPONENTS WHERE %QUERY%
+		
+=== Increasing Performance
+The Maximo environment on WebSphere configures a thread pool for incoming web service connections.  If there is no thread available the Maximo connection will fail.  
+The size of this thread pool should be considered to avoid exceeding this limit.  Possible solutions could be:
+
+* Have multiple JVMs in Maximo available listening on different ports and a load balancer.  Therefore the load is shared between several listener thread pools
+* Avoid situations where many requests are spawned in parallel to Maximo. Maybe add a small delay or send them sequentially instead.
+* Retry a connection if it fails.
+ 
+---
+
+== Example Use Case
+Query invoices unprocessed in Maximo (EXTERNALREFID is blank).  Write these invoices to a file.
+Mark returned invoices as 'processed' by populating the EXTERNALREFID.
+
+===  Anypoint&trade; Studio  Visual Editor | XML Editor
+Pre-requisites: 
+
+* Generate object structure CT_INVOICES in Maximo exposing the INVOICE entity.
+* Generate web service CT_INVOICES based on object structure CT_INVOICES in Maximo.
+* Deploy the CT_INVOICES web service on the Maximo container.
+
+Flow Design:
+1. Define an inbound HTTP listener such that when a GET request is received the interface is triggered. 
+
+2. Query Maximo for any invoices with a blank EXTERNALREFID (if this field is being used by some other interface, than consider creating a new field in Maximo)
+
+3. Write the XML received from Maximo into an external repository.
+
+4. Extract INVOICENUM returned by Maximo.  Maximo XML references the http://www.ibm.com/maximo XML namespace.  The namespace needs to be setup in the Mule flow such that XPath expressions can traverse the XML.  
+
+5. Update the EXTERNALREFID for all INVOICENUM returned as 'processed'.
+
+=== Code Example
+[source,xml]
+----
+ <mulexml:namespace-manager includeConfigNamespaces="true">
+  <mulexml:namespace uri="http://www.ibm.com/maximo" prefix="max"/>
+  </mulexml:namespace-manager>
+  
+   <flow name="MaximoToSun_invoicesDemo">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/maximoinvoices" doc:name="HTTP">
+            <http:response-builder>
+                <http:header headerName="Content-Type" value="text/xml"/>
+            </http:response-builder>
+        </http:listener>
+        <maximo:query config-ref="maximo" webServiceName="CT_INVOICES" doc:name="Query Invoices Pending" maximumItems="1">
+        <maximo:query-conditions objectName="INVOICE">
+        	<maximo:query-conditions>
+        		<maximo:query-condition fieldName="EXTERNALREFID" fieldValue="" operator="equals" operandModeOr="false"/>
+        	</maximo:query-conditions>
+        </maximo:query-conditions>
+        </maximo:query>
+        <logger message="Maximo Response: #[payload]" level="INFO" doc:name="Logger"/>
+        <file:outbound-endpoint responseTimeout="10000" doc:name="File" connector-ref="File" path="invoices" outputPattern="export.xml"/>
+        <expression-transformer expression="#[xpath3('//max:INVOICE/max:INVOICENUM', payload, 'NODESET')]" doc:name="Expression"/>
+        <logger message="Maximo Response: #[payload]" level="INFO" doc:name="Logger"/>
+        <collection-splitter doc:name="Collection Splitter"/>
+        <expression-transformer expression="#[xpath3('.', payload, 'STRING')]" doc:name="Expression"/>
+        <logger message="Maximo Response: #[payload]" level="INFO" doc:name="Logger"/>
+        <maximo:update config-ref="maximo" webServiceName="CT_INVOICES" action="Update" doc:name="Invoice Writeback">
+        	<maximo:udpate-entries>
+            	<maximo:udpate-entry action="Change" objectName="INVOICE">
+            		<maximo:condition-fields ref="#[['INVOICENUM': payload, 'SITEID': 'BEDFORD', 'ORGID':'EAGLENA']]"/>
+            		<maximo:fields ref="#[['EXTERNALREFID': 'processed']]"/>
+            	</maximo:udpate-entry>            	
+            </maximo:udpate-entries>            
+        </maximo:update>        
+        <catch-exception-strategy doc:name="Catch Exception Strategy" enableNotifications="false">
+            <expression-transformer expression="#[exception.getCause().getMessage().replaceAll('Unsuccessful SunSystems SSC Response:', '')]" doc:name="Expression"/>
+        </catch-exception-strategy>
+    </flow>
+---- 
+---
+=== F.A.Q
+This section will be improved in upcoming versions and we start receiving questions.  Please contact Computime Ltd with any questions (info@computime.com.mt) and a ticket will be raised on our helpdesk system. 
+
+=== See Also
+Maximo Integration Framework documentation available on the IBM Knowledge Center
+http://www-01.ibm.com/support/knowledgecenter/SSLKT6_7.1.0/com.ibm.mam.doc_7.1/pdf/mam71_integration_guide.pdf
