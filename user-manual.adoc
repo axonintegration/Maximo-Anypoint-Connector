@@ -60,7 +60,7 @@ You should either have visibility and edit access to object structures and web s
 === Dependencies
 
 MuleSoft Anypoint Studio or MuleSoft Standalone v3.6.x is required for the connector to work.
-Should you require the connector for a previous version of the MuleSoft environment kindly contact Computime Ltd.
+Should you require the connector for a previous version of the MuleSoft environment kindly contact Computime Software.
 This connector is compiled using JDK 7.
 
 ---
@@ -69,7 +69,7 @@ This connector is compiled using JDK 7.
 
 === Installing
 
-The connector distribution is obtainable by contacting Computime Ltd (http://www.computime.com.mt/) 
+The connector distribution is obtainable by contacting Computime Software (http://www.computimesoftware.com) 
 Once you are provided with the connector UpdateSite.zip package.  In the Studio navigate to 
 Help > Install New Software > Add > Navigate to the zip file on your local repository and install.
 
@@ -230,7 +230,7 @@ Flow Design:
 ---- 
 ---
 === F.A.Q
-This section will be improved in upcoming versions and we start receiving questions.  Please contact Computime Ltd with any questions (info@computime.com.mt) and a ticket will be raised on our helpdesk system. 
+This section will be improved in upcoming versions and we start receiving questions.  Please contact Computime Software with any questions (info@computimesoftware.com) and a ticket will be raised on our helpdesk system. 
 
 === See Also
 Maximo Integration Framework documentation available on the IBM Knowledge Center
