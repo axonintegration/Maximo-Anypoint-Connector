@@ -9,7 +9,7 @@
 //
 //- <Release_date>: The date in which the connector is released (not when the notes are written, mind you)
 //
-//- <Connector_Version>: Describes the connector version, such as ìV2013î, ìV4.0î, ìV4.0.1-HF2î or whatever used for release
+//- <Connector_Version>: Describes the connector version, such as ‚ÄúV2013‚Äù, ‚ÄúV4.0‚Äù, ‚ÄúV4.0.1-HF2‚Äù or whatever used for release
 //
 //- <Connector_Guide_Url>: Points to the mulesoft.org pages for documentation on the functional aspects of the connector. e.g.: http://www.mulesoft.org/documentation/display/current/Microsoft+SharePoint+2013+Connector
 //
@@ -43,12 +43,12 @@ The Maximo connector is compatible with:
 === Migrating from older versions of the connector:
 Not applicable as this is the first public release 
 
-//If youíre currently using connector <old_connector_version> to migrate to this connector you need to:
+//If you‚Äôre currently using connector <old_connector_version> to migrate to this connector you need to:
 
 //- <step_1>
 //- <step_2>
 
-//If youíre currently using a connector version <old_connector_version_2> this connector is not compatible. Donít upgrade to this connector unless you are sure you do the following:
+//If you‚Äôre currently using a connector version <old_connector_version_2> this connector is not compatible. Don‚Äôt upgrade to this connector unless you are sure you do the following:
 
 //- <step_3>
 //- <step_4>
@@ -84,7 +84,7 @@ Not applicable as this is the first public release
 
 //Example of a Bug listing:
 
-//- Asyncronous processing now works when invoking via an External interface - Previously, when invoking an asyncronous service, the call could end up in a deadlock unless //lock(object) was used. Now, the connector locks automatically and you donít need to do it.
+//- Asyncronous processing now works when invoking via an External interface - Previously, when invoking an asyncronous service, the call could end up in a deadlock unless //lock(object) was used. Now, the connector locks automatically and you don‚Äôt need to do it.
 
 //Example of what is NOT A BUG listing
 
@@ -94,8 +94,8 @@ Not applicable as this is the first public release
 //- Resolved NPE (lacking information like scenarios under which it can be reproduced, what is NPE, etc)
 
 === Known Issues
-- No support for customized web services of web services exposing Enterprise Services - Contact Computime Ltd if support is required (www.computime.com.mt)
-- No support of WebSphere MQ integration - Contact Computime Ltd if support is required (www.computime.com.mt)
+- No support for customized web services of web services exposing Enterprise Services - Contact Computime Software if support is required (www.computimesoftware.com)
+- No support of WebSphere MQ integration - Contact Computime Software if support is required (www.computimesoftware.com)
 
 //<Connector_Issues, use the same format as Bug listings>
 
